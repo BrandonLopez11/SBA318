@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Details</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Task: <%= task.name %></h1>
+  <p><strong>Description:</strong> <%= task.description %></p>
+  <p><strong>Created By:</strong> <%= task.createdBy %></p>
+  <p><strong>Status:</strong> <%= task.completed ? 'Completed' : 'Not Completed' %></p>
+
+  <h2>Comments</h2>
+  <ul>
+    <% task.comments.forEach(function(comment) { %>
+      <li><strong><%= comment.user %>:</strong> <%= comment.text %></li>
+    <% }); %>
+  </ul>
+
+  <form action="/tasks/<%= task.id %>/comments" method="POST">
+    <label for="user">Your Name:</label>
+    <input type="text" name="user" required>
+    <br>
+    <label for="text">Comment:</label>
+    <textarea name="text" required></textarea>
+    <br>
+    <button type="submit">Add Comment</button>
+  </form>
+
+  <form action="/tasks/<%= task.id %>/complete?_method=PUT" method="POST">
+    <button type="submit" <%= task.completed ? 'disabled' : '' %>>Mark as Completed</button>
+  </form>
+
+  <form action="/tasks/<%= task.id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete Task</button>
+  </form>
+
+  <a href="/">Back to tasks</a>
+</body>
+</html>
