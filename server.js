@@ -5,8 +5,8 @@ const app = express();
 const port = 3000;
 
 let tasks = [
-  { id: 1, name: 'Task 1', description: 'First Task', completed: false, createdBy: 'Alice', comments: [{ user: 'Alice', text: 'Initial comment' }] },
-  { id: 2, name: 'Task 2', description: 'Second Task', completed: false, createdBy: 'Bob', comments: [] }
+  { id: 1, name: 'Task 1', description: 'Complete Capstone', completed: false, createdBy: 'Brandon', comments: [{ user: 'Brandon', text: 'Initial comment' }] },
+  { id: 2, name: 'Task 2', description: 'Play Soccer', completed: false, createdBy: 'Brian', comments: [] }
 ];
 
 const { checkTaskExistence } = require('./middleWare/taskMiddleware');
